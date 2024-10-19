@@ -1,0 +1,18 @@
+from scipy.interpolate import interp1d
+
+# X ve Y değerlerini tanımla
+x_values = [-2, -1, 0, 1, 2, 3, 4]
+y_values = [0, 0, 3, 21, 99, 100, 100]
+
+# Lineer interpolasyon fonksiyonunu oluştur
+interp_func = interp1d(y_values, x_values, fill_value="extrapolate")
+
+# Y değerlerini tanımla
+y_query = [5, 16, 25, 50, 75, 84, 95]
+
+# İlgili X değerlerini hesapla
+x_result = interp_func(y_query)
+
+# Sonuçları yazdır
+for y, x in zip(y_query, x_result):
+    print(f"Y = {y} için X yaklaşık olarak {x:.2f}")
